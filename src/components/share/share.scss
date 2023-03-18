@@ -1,9 +1,10 @@
 .share{
     width: 100%;
     height: 170%;
-    border-radius: 10px;
+    border-radius: 45px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+    box-shadow: 10px 8px 10px 1px #769bcb;
+    
 
     .shareWrapper{
         padding: 20px;
@@ -14,13 +15,14 @@
     .shareTop{
         display: flex;
         align-items: center;
+        
     }
     .shareProfileImg{
         width: 50px;
         height: 50px;
         border-radius: 50%;
         margin-right: 10px;
-        border: 1px solid #011631;
+        border: 2px solid #769bcb;
         object-fit: cover;
     }
 

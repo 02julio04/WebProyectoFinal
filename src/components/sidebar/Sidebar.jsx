@@ -12,7 +12,10 @@ import ExitToAppOutlined from '@mui/icons-material/ExitToAppOutlined';
 import MenuLink from "../menuLink/MenuLink";
 import Friends from '../friends/Friends';
 import { Users } from "../../data";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 import { DarkModeContext } from '../../context/darkModeContext';
+
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -29,7 +32,9 @@ const Sidebar = () => {
         <span onClick={() => dispatch({ type: "TOGGLE" })}>
         <MenuLink Icon={<Brightness4 />} text="Theme" />
         </span>
+        <span onClick={() => signOut(auth)}>
         <MenuLink Icon={<ExitToAppOutlined />} text="Logout" />
+        </span>
         
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />

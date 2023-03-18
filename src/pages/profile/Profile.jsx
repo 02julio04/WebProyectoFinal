@@ -14,7 +14,7 @@ const Profile = () => {
         <div className="profileRightTop">
             <div className="profileCover">
             <img
-                src="/assets/profileCover/space1.png"
+                src="https://i.pinimg.com/originals/66/44/b3/6644b34c91f57f8d40a4eaa94e3cb797.png"
                 alt=""
                 className="profileCoverImg"
               />

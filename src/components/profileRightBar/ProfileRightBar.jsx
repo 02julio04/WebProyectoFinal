@@ -39,27 +39,27 @@ const ProfileRightBar = () => {
       <div className="profileRightBarFollowings">
         <div className="profileRightBarFollowing">
           <img
-            src="/assets/person/friend1.jpg"
+            src="/assets/person/Enmanuel Face.jpg"
             alt=""
             className="profileRightBarFollowingImg"
           />
-          <span className="profileRightBarFollowingName">Janet</span>
+          <span className="profileRightBarFollowingName">Enmanuel</span>
         </div>
         <div className="profileRightBarFollowing">
           <img
-            src="/assets/person/friend2.jpg"
+            src="/assets/person/friend6.jpg"
             alt=""
             className="profileRightBarFollowingImg"
           />
-          <span className="profileRightBarFollowingName">Isabella</span>
+          <span className="profileRightBarFollowingName">Maria</span>
         </div>
         <div className="profileRightBarFollowing">
           <img
-            src="/assets/person/friend3.jpg"
+            src="/assets/person/Jeancarlos.jpg"
             alt=""
             className="profileRightBarFollowingImg"
           />
-          <span className="profileRightBarFollowingName">Beverly</span>
+          <span className="profileRightBarFollowingName">Jeancarlos</span>
         </div>
         <div className="profileRightBarFollowing">
           <img
@@ -67,15 +67,15 @@ const ProfileRightBar = () => {
             alt=""
             className="profileRightBarFollowingImg"
           />
-          <span className="profileRightBarFollowingName">Glenna</span>
+          <span className="profileRightBarFollowingName">Sophia</span>
         </div>
         <div className="profileRightBarFollowing">
           <img
-            src="/assets/person/friend5.jpg"
+            src="/assets/person/sebatianpicture.jpg"
             alt=""
             className="profileRightBarFollowingImg"
           />
-          <span className="profileRightBarFollowingName">Alexis</span>
+          <span className="profileRightBarFollowingName">Sebastian</span>
         </div>
         <div className="profileRightBarFollowing">
           <img
