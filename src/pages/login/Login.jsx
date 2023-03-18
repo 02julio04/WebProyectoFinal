@@ -30,10 +30,10 @@ const Login = () => {
     <div className="login">
       <div className="loginWrapper">
       <div className="loginLeft">
-          <h3 className="loginLogo">Space</h3>
-          <span className="loginDesc">
-            Connect with friends and the world around you.
-          </span>
+          <div className="loginLogo"><img 
+                    src = 'https://i.pinimg.com/originals/52/b4/9a/52b49ab47ba026d0e01eb3346c0e029a.png'
+                    alt = ""
+                /></div>
         </div>
         <div className="loginRight">
           <div className="loginBox">

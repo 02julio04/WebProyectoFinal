@@ -1,10 +1,49 @@
 import { ChatBubbleOutline, Favorite, MoreVert, ShareOutlined, ThumbUp, ThumbUpAltOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    onSnapshot,
+    serverTimestamp,
+    setDoc,
+  } from "firebase/firestore";
 import TimeAgo from "react-timeago";
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./post.scss"
+import { AuthContext } from '../../context/AuthContext';
+import { db } from '../../firebase';
 const Post = ({post}) => {
+    const [likes, setLikes] = useState([]);
+    const [liked, setLiked] = useState(false);
+
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        const unSub = onSnapshot(
+          collection(db, "posts", post.id, "likes"),
+          (snapshot) => setLikes(snapshot.docs)
+        );
+        return () => {
+          unSub();
+        };
+      }, [post.id]);
+
+      useEffect(() => {
+        setLiked(likes.findIndex((like) => like.id === currentUser?.uid) !== -1);
+      }, [likes, currentUser.uid]);
+
+    const likePost = async () => {
+        if (liked) {
+          await deleteDoc(doc(db, "posts", post.id, "likes", currentUser.uid));
+        } else {
+          await setDoc(doc(db, "posts", post.id, "likes", currentUser.uid), {
+            userId: currentUser.uid,
+          });
+        }
+      };
   return (
     <div className="post">
         <div className="postWrapper">
@@ -40,8 +79,12 @@ const Post = ({post}) => {
         <div className="postBottom">
         <div className="postBottomLeft">
             <Favorite className="bottomLeftIcon" style={{ color: "red" }} />
-            <ThumbUp className="bottomLeftIcon" style={{ color: "#011631" }}/>
-            <span className="postLikeCounter">{}</span>
+            <ThumbUp onClick={(e) => {
+              likePost();
+            }} className="bottomLeftIcon" style={{ color: "blue" }}/>
+            {likes.length > 0 && (
+              <span className="postLikeCounter">{likes.length}</span>
+            )}
         </div>
         <div className="postBottomRight">
         <span className="postCommentText">{} · comments · share </span>
@@ -50,8 +93,15 @@ const Post = ({post}) => {
         </div>
         <hr className="footerHr" />
         <div className="postBottomFooter">
-        <div className="postBottomFooterItem">
+        <div className="postBottomFooterItem"  
+        onClick={(e) => {
+              likePost();
+            }}>
+        {liked ? (
+              <ThumbUp style={{ color: "blue" }} className="footerIcon" />
+            ) : (
                 <ThumbUpAltOutlined className="footerIcon" />
+                )}
                 <span className="footerText">Like</span>
 
             </div>

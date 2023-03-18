@@ -123,7 +123,8 @@ const Share = () => {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKey}
         />
-        <input value = ''placeholder = "image URL (optional)" className='shareInput1'/>
+       
+        
         </div>
         <hr className="shareHr" />
         {img && (

@@ -1,7 +1,7 @@
 .login{
     width: 100vw;
     height: 100vh;
-    background-image: url("https://www.deltadental.com/content/dam/grinmag/us/en/2021/summer/132642_Space_Astronaut_1242x411.jpg");
+    background-image: url("https://images2.alphacoders.com/521/521477.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -21,19 +21,13 @@
             
 
             .loginLogo{
-                font-size: 60px;
-                font-weight: 800;
+                font-weight: 600;
                 color: #011631;
                 margin-bottom: 10px;
-                margin-top: 200px;
+                margin-top: 30px;
                 padding-left: 50px;
             }
 
-            .loginDesc{
-                font-size: 28px;
-                padding-left: 50px;
-        
-            }
         }
 
         .loginRight{
@@ -43,7 +37,7 @@
             margin: 0 20px;
             padding-left: 200px;
             margin-top: 200px;
-            margin-left: 400px;
+            margin-left: 10px;
             justify-content: flex-start;
             
               

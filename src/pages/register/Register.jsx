@@ -63,10 +63,10 @@ const Register = () => {
     <div className="register">
      <div className="registerWrapper">
      <div className="registerLeft">
-          <h3 className="registerLogo">SPACE</h3>
-          <span className="registerDesc">
-            Connect with friends and the world around you on Facebook.
-          </span>
+     <div className="loginLogo"><img 
+                    src = 'https://i.pinimg.com/originals/52/b4/9a/52b49ab47ba026d0e01eb3346c0e029a.png'
+                    alt = ""
+                /></div>
         </div>
         <div className="registerRight">
         <div className="registerBox">
