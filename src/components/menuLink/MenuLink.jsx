@@ -1,16 +1,17 @@
-
-import React from 'react'
+import React, { useContext } from "react";
+import { AuthContext } from "./../../context/AuthContext";
 import "./menuLink.scss"
-const menuLink = ({ Icon, text }) => {
+const MenuLink = ({ Icon, text }) => {
+  const { currentUser } = useContext(AuthContext);
   return (
-    <div className='menuLink'>
+    <div className='MenuLink'>
          {Icon}
-         <span className="menuLinkText">{text}</span>
-         <span className="menuLinkTextName">
-         {text === "Logout" && "(Julio)"}
+         <span className="MenuLinkText">{text}</span>
+         <span className="MenuLinkTextName">
+         {text === "Logout" && `->${currentUser.displayName}` }
          </span>
     </div>
   )
 }
 
-export default menuLink
+export default MenuLink

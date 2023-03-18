@@ -1,4 +1,4 @@
-.menuLink{
+.MenuLink{
     display: flex;
     padding: 10px;
     align-items: center;
@@ -9,17 +9,19 @@
     .menuLinkText{
         margin-left: 10px;
         margin-right: 5px;
+        background-color: #769bcb;
     }
 
     .menuLinkTextName{
         font-weight: 700;
         font-size: 18px;
         text-transform: capitalize;
+        background-color: #769bcb;
     }
 
     &:hover{
-        background-color: #011631;
-        color: white;
+        background-color: #769bcb;
+        color: rgb(255, 255, 255);
     }
 
 }

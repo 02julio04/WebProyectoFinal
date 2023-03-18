@@ -1,8 +1,8 @@
 import { ChatBubbleOutline, Favorite, MoreVert, ShareOutlined, ThumbUp, ThumbUpAltOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import TimeAgo from "react-timeago";
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Users } from '../../data'
 import "./post.scss"
 const Post = ({post}) => {
   return (
@@ -12,16 +12,18 @@ const Post = ({post}) => {
         <div className="postTopLeft">
         <Link to="/profile/userId">
         <img 
-        src={Users.filter((u) => u.id === post.userId)[0].profilePicture} 
+        src={post.data.photoURL} 
         alt="" 
         className="postProfileImg" 
         />
          </Link>
         <span className="postUsername">
-             {Users.filter((u) => u.id === post.userId)[0].username}
+        {post.data.displayName}
             </span>
             <span className="postDate">
-                {post.date}
+            <TimeAgo date= 
+            {new Date(post.data?.timestamp?.toDate()).toLocaleString()}/>
+            
             </span>
         </div>
         <div className="postTopRight">
@@ -32,17 +34,17 @@ const Post = ({post}) => {
         </div>
         </div>
         <div className="postCenter">
-        <span className="postText">{post.body}</span>
-          <img src={post.photo} alt="" className="postImg" />
+        <span className="postText">{post.data.input}</span>
+          <img src={post.data.img} alt="" className="postImg" />
              </div>
         <div className="postBottom">
         <div className="postBottomLeft">
             <Favorite className="bottomLeftIcon" style={{ color: "red" }} />
             <ThumbUp className="bottomLeftIcon" style={{ color: "#011631" }}/>
-            <span className="postLikeCounter">{post.like}</span>
+            <span className="postLikeCounter">{}</span>
         </div>
         <div className="postBottomRight">
-        <span className="postCommentText">{post.comment} · comments · share </span>
+        <span className="postCommentText">{} · comments · share </span>
         </div>
              </div>
         </div>

@@ -26,13 +26,13 @@ const Share = () => {
   const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
   const [input, setInput] = useState("");
-  const [img, setImg] = useState(null);
   const [showEmojis, setShowEmojis] = useState(false);
 
+  const [img, setImg] = useState(null);
 
-  const handlePost = async()=>{
+
+  const handlePost = async () => {
     if (img) {
-
       const storageRef = ref(storage, "Posts/" + uuid());
 
       const uploadTask = uploadBytesResumable(storageRef, img);
@@ -66,8 +66,7 @@ const Share = () => {
           });
         }
       );
-    
-    }else{
+    } else {
       await addDoc(collection(db, "posts"), {
         uid: currentUser.uid,
         photoURL: currentUser.photoURL,
@@ -92,22 +91,23 @@ const Share = () => {
     setInput("");
     setImg(null);
     setShowEmojis(false);
-  }
-      const handleKey = (e) => {
-      e.code === "Enter" && handlePost();
-    };
-        const addEmoji = (e) => {
-        let sym = e.unified.split("-");
-        let codesArray = [];
-        sym.forEach((el) => codesArray.push("0x" + el));
-        let emoji = String.fromCodePoint(...codesArray);
-        setInput(input + emoji);
-       };
+  };
+  const handleKey = (e) => {
+    e.code === "Enter" && handlePost();
+  };
+
+  const addEmoji = (e) => {
+    let sym = e.unified.split("-");
+    let codesArray = [];
+    sym.forEach((el) => codesArray.push("0x" + el));
+    let emoji = String.fromCodePoint(...codesArray);
+    setInput(input + emoji);
+  };
 
   const removeImage = () => {
     setImg(null);
   };
-
+  // console.log(currentUser);
   return (
     <div className="share">
         <div className="shareWrapper">

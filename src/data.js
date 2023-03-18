@@ -22,10 +22,10 @@ export const Users = [
   },
   {
     id: 4,
-    name: "Marisol",
-    username: "Marisol_25",
-    email: "Marisol@gmail.com.",
-    profilePicture: "/assets/person/profile-4.jpg",
+    name: "Manny Machado",
+    username: "Machado_25",
+    email: "Machado@gmail.com.",
+    profilePicture: "https://www.albat.com/__export/1677279035799/sites/debate/img/2023/02/24/manny_machado_x14x.jpg_1528208161.jpg",
   },
 
 ];

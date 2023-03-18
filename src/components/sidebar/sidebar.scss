@@ -4,13 +4,18 @@
     position: sticky;
     top: 50px;
     overflow-y: scroll;
-    background-color:#769bcb;
+    color: rgb(255, 255, 255);
+    background-image: url("../../../public/assets/profileCover/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     
     .sidebarWrapper{
         padding: 20px;
     }
     .sidebarButton{
-        background-color: #011631;
+      background-color: #769bcb;
         color: white;
         border-radius: 5px;
         font-weight: 500;
@@ -28,6 +33,7 @@
         padding: 0;
         margin: 0;
         list-style: none;
+        
 
         
       }
