@@ -8,7 +8,7 @@ const MenuLink = ({ Icon, text }) => {
          {Icon}
          <span className="MenuLinkText">{text}</span>
          <span className="MenuLinkTextName">
-         {text === "Logout" && `->${currentUser.displayName}` }
+         {text === "Salir" && `->${currentUser.displayName}` }
          </span>
     </div>
   )

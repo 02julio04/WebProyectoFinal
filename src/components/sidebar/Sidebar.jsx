@@ -30,15 +30,15 @@ const Sidebar = () => {
         </div>
         <MenuLink Icon={<ChatIcon />} text="Chats" />
         <MenuLink Icon={<VideocamIcon />} text="Videos" />
-        <MenuLink Icon={<GroupsIcon />} text="Friends" />
-        <MenuLink Icon={<BookmarkIcon />} text="Bookmarks" />
+        <MenuLink Icon={<GroupsIcon />} text="Amigos" />
+        <MenuLink Icon={<BookmarkIcon />} text="Coleccion" />
         <MenuLink Icon={<ShoppingCartIcon />} text="Marketplace" />
-        <MenuLink Icon={<EventIcon />} text="Events" />
+        <MenuLink Icon={<EventIcon />} text="Eventos" />
         <span onClick={() => dispatch({ type: "TOGGLE" })}>
-        <MenuLink Icon={<Brightness4 />} text="Theme" />
+        <MenuLink Icon={<Brightness4 />} text="Temas" />
         </span>
         <span onClick={() => signOut(auth)}>
-        <MenuLink Icon={<ExitToAppOutlined />} text="Logout" />
+        <MenuLink Icon={<ExitToAppOutlined />} text="Salir" />
         </span>
         
         <button className="sidebarButton">Show More</button>

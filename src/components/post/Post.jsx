@@ -124,7 +124,7 @@ const Post = ({post}) => {
         </div>
         <div className="postBottomRight">
         <span className="postCommentText" onClick={() => setCommentOpen(!commentOpen)}>
-          {comments.length} · comments · share 
+          {comments.length} · Comentarios 
           </span>
         </div>
              </div>

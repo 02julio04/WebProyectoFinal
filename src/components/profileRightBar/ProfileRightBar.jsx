@@ -1,41 +1,60 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext';
+import { db } from '../../firebase';
+import { doc, onSnapshot } from "firebase/firestore";
 import "./profileRightBar.scss"
+
 const ProfileRightBar = () => {
+  const [getUserInfo, setGetUserInfo] = useState({});
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const getInfo = () => {
+      const unSub = onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
+        setGetUserInfo(doc.data());
+      });
+      return () => {
+        unSub();
+      };
+    };
+    currentUser.uid && getInfo();
+  }, [currentUser.uid]);
+
   return (
     <div className="profileRightBar">
         <div className="profileRightBarHeading">
-        <span className="profileRightBarTitle"> User Information</span>
-        <Link to="/profile/userId/edit" style={{ textDecoration: "none" }}>
-        <span className="editButton">Edit Profile</span>
+        <span className="profileRightBarTitle"> Informacion de Usuario: </span>
+        <Link to={`/profile/${currentUser.displayName}/edit`} style={{ textDecoration: "none" }}>
+        <span className="editButton">Editar Perfil</span>
         </Link>
       </div>
 
       <div className="profileRightBarInfo">
         <div className="profileRightBarInfoItem">
           <span className="profileRightBarInfoKey">Email: </span>
-          <span className="profileRightBarInfoValue">amberlogan@gmail.com</span>
+          <span className="profileRightBarInfoValue">{getUserInfo.email ? getUserInfo.email : currentUser.email}</span>
         </div>
         <div className="profileRightBarInfoItem">
-          <span className="profileRightBarInfoKey">Phone Number: </span>
-          <span className="profileRightBarInfoValue">+4 123 456 789</span>
+          <span className="profileRightBarInfoKey">Telefono: </span>
+          <span className="profileRightBarInfoValue">{getUserInfo.phone}</span>
         </div>
         <div className="profileRightBarInfoItem">
-          <span className="profileRightBarInfoKey">Address: </span>
+          <span className="profileRightBarInfoKey">Edad: </span>
           <span className="profileRightBarInfoValue">
-            Melwood Str. 72 Liverpool
+          {getUserInfo.age}
           </span>
         </div>
         <div className="profileRightBarInfoItem">
           <span className="profileRightBarInfoKey">Country: </span>
-          <span className="profileRightBarInfoValue">United Kingdom</span>
+          <span className="profileRightBarInfoValue">{getUserInfo.country}</span>
         </div>
         <div className="profileRightBarInfoItem">
-          <span className="profileRightBarInfoKey">Relationship: </span>
-          <span className="profileRightBarInfoValue">Single</span>
+          <span className="profileRightBarInfoKey">Status: </span>
+          <span className="profileRightBarInfoValue">{getUserInfo.relationship}</span>
         </div>
       </div>
-      <h4 className="profileRightBarTitle">Close Friends</h4>
+      <h4 className="profileRightBarTitle">Amigos Cercanos: </h4>
       <div className="profileRightBarFollowings">
         <div className="profileRightBarFollowing">
           <img
