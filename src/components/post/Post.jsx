@@ -16,8 +16,12 @@ import "./post.scss"
 import { AuthContext } from '../../context/AuthContext';
 import { db } from '../../firebase';
 const Post = ({post}) => {
+  const [input, setInput] = useState("");
     const [likes, setLikes] = useState([]);
     const [liked, setLiked] = useState(false);
+    const [comments, setComments] = useState([]);
+    const [commentOpen, setCommentOpen] = useState(false);
+    const [commentBoxVisible, setCommentBoxVisible] = useState(false);
 
     const { currentUser } = useContext(AuthContext);
 
@@ -34,6 +38,38 @@ const Post = ({post}) => {
       useEffect(() => {
         setLiked(likes.findIndex((like) => like.id === currentUser?.uid) !== -1);
       }, [likes, currentUser.uid]);
+
+      useEffect(() => {
+        const unSub = onSnapshot(
+          collection(db, "posts", post.id, "comments"),
+          (snapshot) => {
+            setComments(
+              snapshot.docs.map((snapshot) => ({
+                id: snapshot.id,
+                data: snapshot.data(),
+              }))
+            );
+          }
+        );
+        return () => {
+          unSub();
+        };
+      }, [post.id]);
+
+      const handleComment = async (e) => {
+        e.preventDefault();
+
+        await addDoc(collection(db, "posts", post.id, "comments"), {
+          comment: input,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+          uid: currentUser.uid,
+          timestamp: serverTimestamp(),
+        });
+        setCommentBoxVisible(false);
+        setInput("");
+      
+      }
 
     const likePost = async () => {
         if (liked) {
@@ -57,7 +93,7 @@ const Post = ({post}) => {
         />
          </Link>
         <span className="postUsername">
-        {post.data.displayName}
+        @{post.data.displayName.replace(/\s+/g, "").toLowerCase()}
             </span>
             <span className="postDate">
             <TimeAgo date= 
@@ -87,10 +123,12 @@ const Post = ({post}) => {
             )}
         </div>
         <div className="postBottomRight">
-        <span className="postCommentText">{} · comments · share </span>
+        <span className="postCommentText" onClick={() => setCommentOpen(!commentOpen)}>
+          {comments.length} · comments · share 
+          </span>
         </div>
              </div>
-        </div>
+       
         <hr className="footerHr" />
         <div className="postBottomFooter">
         <div className="postBottomFooterItem"  
@@ -105,7 +143,7 @@ const Post = ({post}) => {
                 <span className="footerText">Like</span>
 
             </div>
-            <div className="postBottomFooterItem">
+            <div className="postBottomFooterItem" onClick={() => setCommentBoxVisible(!commentBoxVisible)}>
                 <ChatBubbleOutline className="footerIcon" />
                 <span className="footerText">Comentarios</span>
 
@@ -116,6 +154,47 @@ const Post = ({post}) => {
 
             </div>
         </div>
+        </div>
+        {commentBoxVisible && (
+        <form onSubmit={handleComment} className="commentBox">
+          <textarea
+            type="text"
+            placeholder="Escribe un comentario ..."
+            className="commentInput"
+            rows={1}
+            style={{ resize: "none" }}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button type="submit" disabled={!input} className="commentPost">
+            Comentar
+          </button>
+        </form>
+      )}
+    
+        {commentOpen > 0 && (
+        <div className="comment">
+          {comments
+            .sort((a, b) => b.data.timestamp - a.data.timestamp)
+            .map((c) => (
+              <div>
+              <div className="commentWrapper">
+              <img
+              className="commentProfileImg"
+              src={c.data.photoURL}
+              alt=""
+              />
+            <div className="commentInfo">
+              <span className="commentUsername">
+              @{c.data.displayName.replace(/\s+/g, "").toLowerCase()}
+              </span>
+              <p className="commentText">{c.data.comment}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      )}
     </div>
   )
 }

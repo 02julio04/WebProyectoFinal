@@ -96,3 +96,24 @@
     display: none;
   }
 }
+.shareProfileImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #769bcb;
+  object-fit: cover;
+}
+.Top{
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+}
+.Top > span {
+  font-size: 15px;
+}
+.navbarLinkIcono{
+  margin-left: 20px;
+  gap: 40px;
+  cursor: pointer;
+}

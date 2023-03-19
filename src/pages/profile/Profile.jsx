@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./profile.scss"
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Feed from "../../components/feed/Feed"
 import Rightbar from '../../components/rightbar/Rightbar';
+import { AuthContext } from '../../context/AuthContext';
+import UsersPost from '../../components/usersPost/UsersPost';
+
 const Profile = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
     <div className='profile'>
       <Navbar/>
@@ -19,18 +22,18 @@ const Profile = () => {
                 className="profileCoverImg"
               />
               <img
-                src="/assets/person/user.jpg"
+                src={currentUser.photoURL}
                 alt=""
                 className="profileUserImg"
               />
             </div>
             <div className="profileInfo">
-            <h4 className="profileInfoName">Julio</h4>
-            <span className="profileInfoDesc">Hi Friends!</span>
+            <h4 className="profileInfoName">{currentUser.displayName}</h4>
+            <span className="profileInfoDesc">Bienvenidos!!!!</span>
             </div>
         </div>
         <div className="profileRightBottom">
-                <Feed/>
+               <UsersPost/>
                 <Rightbar profile/>
             </div>
            

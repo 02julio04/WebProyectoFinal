@@ -3,7 +3,7 @@
     margin: 30px 0;
     border-radius: 10px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow: 10px 8px 10px 1px #769bcb;
+    box-shadow: 10px 8px 20px 1px #769bcb;
     .postWrapper{
         padding: 20px;
     }
@@ -24,7 +24,7 @@
                     height: 40px;
                     border-radius: 50%;
                     object-fit: cover;
-                    border: 2px solid #011631;
+                    border: 3px solid #769bcb;
                     cursor: pointer;
                 }
 
@@ -49,6 +49,9 @@
             }
             .postCenter{
                 margin: 20px 0;
+                .postText{
+                color: rgb(0, 0, 0);
+                }
     
                 .postImg{
                     width: 100%;
@@ -134,6 +137,7 @@
                 background: transparent;
                 color: black;
                 border: 1px solid #011631;
+                border-radius: 20px 0 0px 20px;
                 padding: 10px 5px 0px 5px;
                 margin: 0px 0px 20px 20px;
                 outline: none;
@@ -142,7 +146,7 @@
             .commentPost{
                 display: flex;
                 padding: 10px 25px;
-                background-color: #011631;
+                background-color: #4e84ca;
                 color: white;
                 font-size: 14px;
                 font-weight: 500;
@@ -165,7 +169,7 @@
             .commentWrapper{
                 display: flex;
                 align-items: center;
-                border-top: 1px dashed #011631;
+                border-top: 3px dashed #3254d0;
                 width: 90%;
                 margin: auto;
     
@@ -175,7 +179,7 @@
                     width: 60px;
                     height: 60px;
                     border-radius: 50%;
-                    border: 2px solid #011631;
+                    border: 2px solid #738adc;
                     object-fit: cover;
                     cursor: pointer;
                 }
@@ -185,15 +189,15 @@
                     max-width: 80%;
     
                     .commentUsername{
-                        font-weight: 600;
+                        font-weight: 550;
                         cursor: pointer;
                     }
     
                     .commentText{
-                        background-color: #011631;
+                        background-color: #596e8b;
                         color: white;
                         padding: 10px;
-                        margin-top: 3px;
+                        margin-top: 5px;
                         border-radius: 30px 30px 30px 30px;
                     }
                 }

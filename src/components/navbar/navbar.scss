@@ -148,13 +148,24 @@
 @media only screen and (max-width: 768px){
     .navbarContainer{
         .navbarLeft{
-            flex: 3;
+            flex: 2;
+        } .navbarCenter{
+            flex: 4;
+            .searchBar{
+                width: 95%;
+
+                .searchInput{
+                    width: 70%;
+                }
+            }
         }
 
         .navbarRight{
             .navbarLink{
+            .navbarLinks{
                 display: none;
             }
+        }
         }
     }
 }

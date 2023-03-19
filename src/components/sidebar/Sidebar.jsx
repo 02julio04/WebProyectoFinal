@@ -15,14 +15,19 @@ import { Users } from "../../data";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { DarkModeContext } from '../../context/darkModeContext';
+import { AuthContext } from '../../context/AuthContext';
 
 
 const Sidebar = () => {
+  const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className='sidebar'>
         <div className="sidebarWrapper">
-        <MenuLink Icon={<RssFeedIcon />} text="Feed" />
+        <div className="Top">
+        <img src={currentUser.photoURL} alt="" className="shareProfileImg"/>
+        <span>{"Bienvenido " + currentUser.displayName}</span>
+        </div>
         <MenuLink Icon={<ChatIcon />} text="Chats" />
         <MenuLink Icon={<VideocamIcon />} text="Videos" />
         <MenuLink Icon={<GroupsIcon />} text="Friends" />

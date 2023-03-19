@@ -16,17 +16,19 @@ const Navbar = () => {
     <div className='navbarContainer'>
       <div className="navbarLeft">
         <Link to='/'style={{ textDecoration: "none" }}>
-        <img src="https://i.pinimg.com/originals/52/b4/9a/52b49ab47ba026d0e01eb3346c0e029a.png"  className='logoImg' /><span className="logo">SPACE</span>
+        <span className="logo">SPACE</span>
         </Link>
         </div>
-      <div className="navbarCenter"><div className="searchBar">
+      <div className="navbarCenter">
+        <div className="searchBar">
           <SearchIcon className="searchIcon" />
           <input
             type="text"
-            placeholder="Search for friends post or video"
+            placeholder="Busca a un amigo"
             className="searchInput"
           />
-        </div></div>
+        </div>
+        </div>
       <div className="navbarRight">
       <div className="navbarLinks">
       <Link to="/profile/userId" style={{ color: "white" }}>

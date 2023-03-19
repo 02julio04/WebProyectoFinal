@@ -47,7 +47,7 @@
         color: rgb(156,156,156);
 
         .shareInput{
-            color: rgb(156,156,156);
+            color: rgb(255, 255, 255);
         }
     }
 
@@ -78,5 +78,62 @@
                 }
             }
         }
+    }.commentBox{
+        display: flex;
+    
+        .commentInput{
+            display: flex;
+            flex: 1;
+            width: 75%;
+            background: white;
+            color: black;
+            border: 1px solid #011631;
+            padding: 10px 5px 0px 5px;
+            margin: 0px 0px 20px 20px;
+            outline: none;
+        }
+    
+        .commentPost{
+            display: flex;
+            padding: 10px 25px;
+            background-color: rgb(224, 221, 221);;
+                color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0px 20px 20px 0px;
+            border: none;
+            cursor: pointer;
+    
+            &:disabled{
+                cursor: not-allowed;
+                background-color: #011631a4;
+            }
+        }
+    }.footerText{
+        font-weight: 500;
+        color: #769bcb;
     }
+    .footerIcon{
+        color: #769bcb;
+        font-size: 30px;
+        margin-right: 10px;
+    }
+    .shareInput{
+        border: none;
+        background-color: transparent;
+        color: rgba(250, 253, 255, 0.909);
+        font-size: 18px;
+        width: 80%;
+        height: 30px;
+    }.postText{
+        color: rgb(255, 255, 255);
+        }
+        .postUsername{
+            color: rgb(255, 255, 255);
+        }
+        .postDate{
+            color: rgb(255, 255, 255);
+        }.shareOptionText{
+            color: rgb(255, 255, 255);
+        }
 } 
