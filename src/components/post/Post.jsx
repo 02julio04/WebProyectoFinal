@@ -1,5 +1,6 @@
-import { ChatBubbleOutline, Favorite, MoreVert, ShareOutlined, ThumbUp, ThumbUpAltOutlined } from '@mui/icons-material'
+import { ChatBubbleOutline, EmojiEmotions, Favorite, MoreVert, ShareOutlined, ThumbUp, ThumbUpAltOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import AddReactionIcon from '@mui/icons-material/AddReaction';
 import {
     addDoc,
     collection,
@@ -14,7 +15,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./post.scss"
 import { AuthContext } from '../../context/AuthContext';
+import Picker from "@emoji-mart/react";
 import { db } from '../../firebase';
+
 const Post = ({post}) => {
   const [input, setInput] = useState("");
     const [likes, setLikes] = useState([]);
@@ -22,6 +25,7 @@ const Post = ({post}) => {
     const [comments, setComments] = useState([]);
     const [commentOpen, setCommentOpen] = useState(false);
     const [commentBoxVisible, setCommentBoxVisible] = useState(false);
+    const [showEmojis, setShowEmojis] = useState(false);
 
     const { currentUser } = useContext(AuthContext);
 
@@ -79,6 +83,13 @@ const Post = ({post}) => {
             userId: currentUser.uid,
           });
         }
+      };
+      const addEmoji = (e) => {
+        let sym = e.unified.split("-");
+        let codesArray = [];
+        sym.forEach((el) => codesArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codesArray);
+        setInput(input + emoji);
       };
   return (
     <div className="post">
@@ -146,6 +157,7 @@ const Post = ({post}) => {
             <div className="postBottomFooterItem" onClick={() => setCommentBoxVisible(!commentBoxVisible)}>
                 <ChatBubbleOutline className="footerIcon" />
                 <span className="footerText">Comentarios</span>
+               
 
             </div>
             <div className="postBottomFooterItem">
@@ -155,6 +167,11 @@ const Post = ({post}) => {
             </div>
         </div>
         </div>
+        {showEmojis && (
+          <div className="emoji">
+            <Picker onEmojiSelect={addEmoji} />
+          </div>
+        )}
         {commentBoxVisible && (
         <form onSubmit={handleComment} className="commentBox">
           <textarea
@@ -166,6 +183,12 @@ const Post = ({post}) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
+          <div  onClick={() => setShowEmojis(!showEmojis)} className="shareOption">
+           <AddReactionIcon
+                className="shareIcon"
+                style={{ color: "rgba(99, 239, 108, 0.75)" }}
+              />
+              </div>
           <button type="submit" disabled={!input} className="commentPost">
             Comentar
           </button>

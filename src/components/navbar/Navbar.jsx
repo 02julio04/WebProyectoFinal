@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className='navbarContainer'>
       <div className="navbarLeft">
         <Link to='/'style={{ textDecoration: "none" }}>
-        <span className="logo">SPACE</span>
+        <span className="logo"style={{ color: "white" }}>SPACE</span>
         </Link>
         </div>
       <div className="navbarCenter">
@@ -32,9 +32,9 @@ const Navbar = () => {
       <div className="navbarRight">
       <div className="navbarLinks">
       <Link to="/profile/userId" style={{ color: "white" }}>
-      <HomeIcon fontSize = "large" className="navbarLinkIcono" />
+      <HomeIcon fontSize = "large" className="navbarLink" style={{ color: "white" }}/>
       </Link>
-      <SportsEsportsIcon fontSize='large' className="navbarLinkIcono"/>
+      <SportsEsportsIcon fontSize='large' className="navbarLink"style={{ color: "white" }}/>
         </div>
         <div className="navbarIcons">
           <div className="navbarIconItem">

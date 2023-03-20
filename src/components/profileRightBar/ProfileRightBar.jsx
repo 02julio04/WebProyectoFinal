@@ -46,11 +46,11 @@ const ProfileRightBar = () => {
           </span>
         </div>
         <div className="profileRightBarInfoItem">
-          <span className="profileRightBarInfoKey">Country: </span>
+          <span className="profileRightBarInfoKey">Ciudad: </span>
           <span className="profileRightBarInfoValue">{getUserInfo.country}</span>
         </div>
         <div className="profileRightBarInfoItem">
-          <span className="profileRightBarInfoKey">Status: </span>
+          <span className="profileRightBarInfoKey">Estado Civil: </span>
           <span className="profileRightBarInfoValue">{getUserInfo.relationship}</span>
         </div>
       </div>

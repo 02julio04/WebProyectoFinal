@@ -8,6 +8,21 @@
         padding: 20px;
     }
 
+        .shareOption{
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .shareIcon{
+            font-size: 30px;
+            margin-right: 2px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        
+
         .postTop{
             display: flex;
             align-items: center;
@@ -123,7 +138,7 @@
     
             .postBottomFooterItem:hover{
                 background-color: rgba(255, 255, 255, 0.877);
-                box-shadow: 10px 1px 10px 5px  #a8f47d;
+                box-shadow: 10px 1px 100px 5px  #5665e7;
             }
         
     

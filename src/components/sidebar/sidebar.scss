@@ -84,11 +84,12 @@
 
 @media only screen and (max-width:768px){
   .sidebar{
-    display: block;
+    display: none;
 
     .sidebarWrapper{
       padding: 3px;
     }
+    
   }
 }
 @media only screen and (max-width:576px){

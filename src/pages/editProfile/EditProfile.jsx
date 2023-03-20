@@ -174,7 +174,7 @@ const EditProfile = () => {
                     />
                   </div>
                   <div className="formInput">
-                    <label>Country:</label>
+                    <label>Ciudad:</label>
                     <input type="text" name="country" placeholder="USA" onChange={handleChange}/>
                   </div>
                   <div className="formInput">
